@@ -33,7 +33,10 @@ class SurfShopTests(unittest.TestCase):
     def test_apply_locals_discount(self):
         self.cart.apply_locals_discount()
         self.assertTrue(self.cart.locals_discount)
-
+    
+    def test_add_invalid_checkout_date(self):
+        date = datetime.datetime.now()
+        self.assertRaises(surfshop.CheckoutDateError, self.cart.set_checkout_date, date)
    
 
 unittest.main()
